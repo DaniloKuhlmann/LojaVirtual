@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  lojavirtual:
+    image: ${DOCKER_REGISTRY-}lojavirtual
+    build:
+      context: .
+      dockerfile: LojaVirtual/Dockerfile
