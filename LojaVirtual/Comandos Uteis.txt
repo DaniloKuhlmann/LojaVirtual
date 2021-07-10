@@ -1,0 +1,6 @@
+﻿Comando da biblioteca npgsql para database-first
+dotnet ef dbcontext scaffold "Host=localhost;Database=postgres;Username=postgres;Password=postgres" Npgsql.EntityFrameworkCore.PostgreSQL  -o Models -c BDContext -f --no-pluralize --use-database-names
+Comando da biblioteca npgsql para code-first
+add Microsoft.EntityFrameworkCore.Tools
+Add-Migration "nomeupdate" -Context bdcontext
+update-database

@@ -20,6 +20,7 @@ namespace LojaVirtual.Controllers
 
         public IActionResult Index()
         {
+           // var context = DbConfig.Initialize();
             return View();
         }
 

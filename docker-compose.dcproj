@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>4024c531-3dab-4746-9856-1482700ea1e2</ProjectGuid>
+    <ProjectGuid>65d4bcd9-ab4f-42a3-96f5-b25fa7ddb4cd</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>lojavirtual</DockerServiceName>
