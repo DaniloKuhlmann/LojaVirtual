@@ -16,8 +16,8 @@ namespace LojaVirtual.Models
             : base(options)
         {
         }
-        public DbSet<Produtos> Produtos { get; set; }
-        public DbSet<Estoque> Estoques { get; set; }
+        public virtual DbSet<Produtos> Produtos { get; set; }
+        public virtual DbSet<Estoque> Estoques { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<lojas> Lojas { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
