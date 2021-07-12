@@ -12,20 +12,6 @@ services:
     networks:
       default:
         ipv4_address: "172.28.1.8"
-  dbpost:
-    image: postgres
-    container_name: postgres-db
-    ports:
-      - "5432:5432"
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: postgres
-    volumes:
-      - db_postgre:/var/lib/postgresql/datavolumes
-    networks:
-      default:
-        ipv4_address: "172.28.1.7"
-
 volumes:
   db_postgre:
 networks:  

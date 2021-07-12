@@ -1,10 +1,13 @@
 ﻿using LojaVirtual.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LojaVirtual.Controllers
@@ -17,13 +20,16 @@ namespace LojaVirtual.Controllers
         {
             _logger = logger;
         }
-
+        public IActionResult login()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
            // var context = DbConfig.Initialize();
             return View();
         }
-
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();

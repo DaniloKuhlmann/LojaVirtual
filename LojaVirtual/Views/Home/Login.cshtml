@@ -1,0 +1,16 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var teste = ViewBag.Teste as string;
+    @model Users;
+}
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="@Environment.GetEnvironmentVariable("IDClienteGoogle")">
+<div>
+    <form class="form-control" asp-action="Login" asp-controller="Home" asp-antiforgery="true">
+        <input type="text" asp-for="UserName" asp-area="Username" />
+        <input type="password" asp-for="Password" asp-area="Password" />
+    </form>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+</div>
