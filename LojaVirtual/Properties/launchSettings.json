@@ -31,7 +31,11 @@
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "publishAllPorts": true,
-      "useSSL": true
+      "useSSL": true,
+      "sslPort": 49155,
+      "DockerfileRunArguments": "--network=estudo --name=Loja",
+      "ASPNETCORE_ENVIRONMENT": "Development"
+
     }
   }
 }

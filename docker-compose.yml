@@ -1,20 +1,23 @@
-version: '3.4'
-
+version: "3.6"
 services:
-  lojavirtual:
-    image: ${DOCKER_REGISTRY-}lojavirtual
-    build:
-      context: .
-      dockerfile: LojaVirtual/Dockerfile
+  dbpost:
+    image: postgres
+    container_name: postgres-db
     ports:
-    - "37009:80"
-    - "36009:443"
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db_postgre:/var/lib/postgresql/datavolumes
     networks:
-      default:
-        ipv4_address: "172.28.1.8"
+      wp-net:      
 volumes:
   db_postgre:
-networks:  
-    default:
-        external:  
-            name: custom-network
+networks:
+  wp-net:
+    driver_opts:
+      com.docker.network.enable_ipv6: "true"
+    name: estudo
+    ipam:
+      driver: default

@@ -16,8 +16,11 @@ namespace LojaVirtual.Models
         public string UserName { get; set; }
         [Required]
         public string Password { get; set; }
+        public string Email { get; set; }
+        public string Role { get; set; }
         public string Token { get; set; }
         [Required]
+        public GoogleAccount Google { get; set; }
         public lojas Loja { get; set; }
         public Endereço Endereço { get; set; }
         [Required]

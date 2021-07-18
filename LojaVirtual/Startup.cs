@@ -40,6 +40,10 @@ namespace LojaVirtual
             {
                 options.ClientId = Environment.GetEnvironmentVariable("GoogleID");
                 options.ClientSecret = Environment.GetEnvironmentVariable("GoogleSecrets");
+            }).AddMicrosoftAccount(options =>
+            {
+                options.ClientId = Environment.GetEnvironmentVariable("MicrosoftID");
+                options.ClientSecret = Environment.GetEnvironmentVariable("MicrosoftSecret");
             });
         }
 
