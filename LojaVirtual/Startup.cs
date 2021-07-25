@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,13 +31,13 @@ namespace LojaVirtual
         {
             services.AddControllersWithViews();
 
-
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
             }).AddCookie(options =>
             {
-                options.LoginPath = "/account/google-login"; // Must be lowercase
+                options.LoginPath = "/account/"; // Must be lowercase
             }).AddGoogle(options =>
             {
                 options.ClientId = Environment.GetEnvironmentVariable("GoogleID");
@@ -45,6 +47,16 @@ namespace LojaVirtual
                 options.ClientId = Environment.GetEnvironmentVariable("MicrosoftID");
                 options.ClientSecret = Environment.GetEnvironmentVariable("MicrosoftSecret");
             });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Provider", policy => {
+
+                    policy.AuthenticationSchemes.Add(MicrosoftAccountDefaults.AuthenticationScheme);
+                    policy.AuthenticationSchemes.Add(GoogleDefaults.AuthenticationScheme);
+                    policy.RequireAuthenticatedUser();
+                });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

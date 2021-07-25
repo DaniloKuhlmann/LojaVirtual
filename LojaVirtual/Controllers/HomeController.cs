@@ -20,14 +20,13 @@ namespace LojaVirtual.Controllers
         {
             _logger = logger;
         }
-        public IActionResult login()
+        public IActionResult Login()
         {
             return View();
         }
         public IActionResult Index()
         {
-           // var context = DbConfig.Initialize();
-            return View();
+			return View();
         }
         [Authorize]
         public IActionResult Privacy()

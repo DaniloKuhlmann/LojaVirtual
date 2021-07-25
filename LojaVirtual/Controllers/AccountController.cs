@@ -14,21 +14,20 @@ namespace LojaVirtual.Controllers
     [AllowAnonymous, Route("account")]
     public class AccountController : Controller
     {
-        [Route("google-login")]
+        [Route("google")]
         public IActionResult GoogleLogin()
         {
             var properties = new AuthenticationProperties { RedirectUri = Url.Action("ResponseLogin") };
             return Challenge(properties, GoogleDefaults.AuthenticationScheme);
         }
-        [Route("microsoft-login")]
+        [Route("microsoft")]
         public IActionResult MicrosoftLogin()
         {
             var properties = new AuthenticationProperties { RedirectUri = Url.Action("ResponseLogin") };
             return Challenge(properties, MicrosoftAccountDefaults.AuthenticationScheme);
-            
-
         }
         [Route("ResponseLogin")]
+        [Authorize(Policy = "Provider")]
         public async Task<IActionResult> ResponseLogin()
         {
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -38,29 +37,22 @@ namespace LojaVirtual.Controllers
                 {
                     claim.Issuer,
                     claim.OriginalIssuer,
+                    claim.Properties,
                     claim.Type,
                     claim.Value
                 });
 
             return Json(claims);
         }
-        [Route("GoogleResponseRegister")]
-
-        public async Task<ActionResult> RegisterLogin()
+        public IActionResult Login()
+		{
+            return View();
+		}
+        [Route("logout")]
+        public async Task<ActionResult> Logout()
         {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            var resul = HttpContext.Response;
-            var claims = result.Principal.Identities
-                .FirstOrDefault().Claims.Select(claim => new
-                {
-                    claim.Issuer,
-                    claim.OriginalIssuer,
-                    claim.Type,
-                    claim.Value
-                });
-
-            return Json(claims);
-
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

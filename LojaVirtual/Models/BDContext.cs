@@ -16,6 +16,8 @@ namespace LojaVirtual.Models
             : base(options)
         {
         }
+        public virtual DbSet<GoogleAccount> GoogleAccounts {get;set;}
+        public virtual DbSet<MicrosoftAccount> MicrosoftAccounts { get; set;}
         public virtual DbSet<Produtos> Produtos { get; set; }
         public virtual DbSet<Estoque> Estoques { get; set; }
         public virtual DbSet<Users> Users { get; set; }

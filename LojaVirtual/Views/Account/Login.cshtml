@@ -1,0 +1,16 @@
+﻿@*
+	For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	var teste = ViewBag.Teste as string;
+	@model Users;
+}
+<div>
+	<form class="form-control" asp-action="Login" asp-controller="Account" asp-antiforgery="true">
+		<input type="text" asp-for="UserName" asp-area="Username" />
+		<input type="password" asp-for="Password" asp-area="Password" />
+	</form>
+	<a href="/Account/Google">Login Google</a>
+	<a href="/Account/Microsoft">Login Microsoft</a>
+	<a>Registrar</a>
+</div>
