@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace LojaVirtual.Classes
@@ -41,6 +42,15 @@ namespace LojaVirtual.Classes
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
+        }
+        public static string HASHCalculate(string Password)
+        {
+            return Convert.ToBase64String(SHA512.HashData(Encoding.UTF8.GetBytes(Password)));
+        }
+        public static bool CompareHASH(string Password, string HASH)
+        {
+            var hashcalc = HASHCalculate(Password);
+            return hashcalc == HASH;
         }
     }
 }
