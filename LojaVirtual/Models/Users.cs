@@ -19,8 +19,8 @@ namespace LojaVirtual.Models
         public string Email { get; set; }
         public string Role { get; set; }
         public string Token { get; set; }
-        [Required]
         public GoogleAccount Google { get; set; }
+        public MicrosoftAccount Microsoft { get; set; }
         public lojas Loja { get; set; }
         public Endereço Endereço { get; set; }
         [Required]
